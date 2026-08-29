@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Darsenizami.Models.Admission>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/layoutAdmin.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdmissionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Form)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdmissionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Form.FormId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.StudentId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AdmissionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AdmissionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AdmissionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

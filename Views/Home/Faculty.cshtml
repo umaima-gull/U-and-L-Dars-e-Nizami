@@ -1,0 +1,316 @@
+﻿@* @model IEnumerable<Darsenizami.Models.Faculty>
+
+<h1>Faculty</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<style>
+    .faculty-card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #fff;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        height: 100%;
+    }
+
+        .faculty-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+    .faculty-header {
+        background: linear-gradient(135deg, #0d6efd, #0a58ca);
+        padding: 25px 20px;
+        text-align: center;
+        color: white;
+    }
+
+    .faculty-icon {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .faculty-body {
+        padding: 22px;
+    }
+
+    .faculty-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: #222;
+        text-align: center;
+    }
+
+    .faculty-info {
+        margin-bottom: 12px;
+        font-size: 15px;
+        color: #555;
+        display: flex;
+        align-items: center;
+    }
+
+        .faculty-info strong {
+            color: #111;
+            min-width: 120px;
+        }
+
+    .faculty-footer {
+        padding: 18px;
+        text-align: center;
+        border-top: 1px solid #eee;
+    }
+
+    .contact-btn {
+        background: #0d6efd;
+        color: white;
+        padding: 10px 22px;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: 0.3s ease;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+        .contact-btn:hover {
+            background: #084298;
+            color: #fff;
+        }
+
+    @@media (max-width: 768px) {
+        .faculty-title {
+            font-size: 19px;
+        }
+
+        .faculty-info {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="faculty-card">
+
+                    <div class="faculty-header">
+                        <div class="faculty-icon">
+                            @(item.Designation.Substring(0, 1))
+                        </div>
+                    </div>
+
+                    <div class="faculty-body">
+
+                        <h5 class="faculty-title">@item.Designation</h5>
+
+                        <div class="faculty-info">
+                            <strong>Qualification:</strong>
+                            <span>@item.Qualification</span>
+                        </div>
+
+                        <div class="faculty-info">
+                            <strong>Experience:</strong>
+                            <span>@item.ExperienceYears Years</span>
+                        </div>
+
+                        <div class="faculty-info">
+                            <strong>Specialization:</strong>
+                            <span>@item.Specialization</span>
+                        </div>
+
+                        <div class="faculty-info">
+                            <strong>Contact:</strong>
+                            <span>@item.ContactNo</span>
+                        </div>
+
+                    </div>
+
+                    <div class="faculty-footer">
+                        <a href="/home/Contact" class="contact-btn">
+                            Contact Now
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div> *@  
+
+@model IEnumerable<Darsenizami.Models.Faculty>
+
+<!-- ✅ Overlap Fix & Modern Container Grid -->
+<div class="container my-5" style="position: relative !important; z-index: 99 !important; padding-top: 180px !important;">
+
+    <!-- Professional Top Section (Button Removed) -->
+    <div class="row mb-5 border-bottom pb-4">
+        <div class="col-12 text-center text-md-start">
+            <h1 class="fw-extrabold text-dark mb-1" style="letter-spacing: -0.5px; font-weight: 800;">Our Faculty</h1>
+            <p class="text-muted small mb-0">Meet our highly qualified academic team and educators</p>
+        </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="faculty-card border border-light-subtle">
+
+                    <!-- Clean Light Header with Initial -->
+                    <div class="faculty-header-modern">
+                        <div class="faculty-icon-avatar shadow-sm">
+                            @(string.IsNullOrEmpty(item?.Designation) ? "F" : item.Designation.Substring(0, 1))
+                        </div>
+                    </div>
+
+                    <!-- Card Body with Structured Rows -->
+                    <div class="faculty-body">
+                        <h5 class="faculty-title text-truncate fs-5 fs-md-6" title="@item?.Designation">@(item?.Designation ?? "Faculty Member")</h5>
+
+                        <div class="faculty-info-row">
+                            <span class="info-label">Qualification</span>
+                            <span class="info-value text-dark text-truncate" style="max-width: 55%;">@(item?.Qualification ?? "N/A")</span>
+                        </div>
+
+                        <div class="faculty-info-row">
+                            <span class="info-label">Experience</span>
+                            <span class="info-value text-primary fw-semibold">@(item?.ExperienceYears?.ToString() ?? "0") Years</span>
+                        </div>
+
+                        <div class="faculty-info-row">
+                            <span class="info-label">Specialization</span>
+                            <span class="info-value text-dark text-truncate" title="@item?.Specialization" style="max-width: 55%;">@(item?.Specialization ?? "General")</span>
+                        </div>
+
+                        <div class="faculty-info-row border-0 mb-0">
+                            <span class="info-label">Contact No</span>
+                            <span class="info-value text-secondary font-monospace small">@(item?.ContactNo ?? "N/A")</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer Action Button -->
+                    <div class="faculty-footer bg-light-subtle">
+                        <a href="/home/Contact" class="contact-btn-modern w-100 text-center">
+                            Contact Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Premium Professional CSS Stylesheets -->
+<style>
+    .faculty-card {
+        border: none;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #ffffff;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .faculty-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(13, 110, 253, 0.12);
+        }
+
+    .faculty-header-modern {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        padding: 30px 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .faculty-icon-avatar {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0d6efd, #0a58ca);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .faculty-body {
+        padding: 24px;
+        flex-grow: 1;
+    }
+
+    .faculty-title {
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #1a1a1a;
+        text-align: center;
+    }
+
+    .faculty-info-row {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px dashed #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .info-label {
+        color: #777777;
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .info-value {
+        font-weight: 600;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .faculty-footer {
+        padding: 18px 24px 24px 24px;
+        border-top: 1px solid #f8f9fa;
+    }
+
+    .contact-btn-modern {
+        background: #0d6efd;
+        color: white;
+        padding: 11px 24px;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.15);
+    }
+
+        .contact-btn-modern:hover {
+            background: #0a58ca;
+            color: #fff;
+            box-shadow: 0 6px 14px rgba(10, 88, 202, 0.25);
+        }
+</style>

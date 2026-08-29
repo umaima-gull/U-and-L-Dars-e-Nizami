@@ -1,0 +1,69 @@
+﻿@model Darsenizami.Models.Book
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/layoutAdmin.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearLevel" class="control-label"></label>
+                <select asp-for="YearLevel" class="form-control" asp-items="ViewBag.YearLevel"></select>
+                <span asp-validation-for="YearLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubjectId" class="control-label"></label>
+                <select asp-for="SubjectId" class="form-control" asp-items="ViewBag.SubjectId"></select>
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">PDF Book (Optional)</label>
+                <input type="file" name="pdfFile" accept="application/pdf,.pdf" class="form-control" />
+                <input type="hidden" asp-for="PdfLink" />
+                @if (!string.IsNullOrWhiteSpace(Model.PdfLink))
+                {
+                    <small class="form-text text-muted">
+                        Current PDF:
+                        <a href="@Model.PdfLink" target="_blank" rel="noopener">Preview</a>
+                    </small>
+                }
+                else
+                {
+                    <small class="form-text text-muted">Blank chhorne par koi PDF required nahi hogi.</small>
+                }
+                <span asp-validation-for="PdfLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

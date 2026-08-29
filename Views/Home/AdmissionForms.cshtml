@@ -1,0 +1,178 @@
+﻿@* @model Darsenizami.Models.AdmissionForms
+
+<!-- ✅ Space after Navbar -->
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6" style="margin:100px">
+
+            <h2 class="text-center mb-4" style="color:#0d6efd;">Admission Form</h2>
+
+            <form asp-action="Create" class="p-4 shadow-lg rounded" style="background:#ffffff; border:1px solid #e0e0e0;">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Full Name -->
+                <div class="form-group mb-3">
+                    <label asp-for="FullName" class="control-label fw-bold"></label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="form-group mb-3">
+                    <label asp-for="Dob" class="control-label fw-bold"></label>
+                    <input asp-for="Dob" type="date" class="form-control" />
+                    <span asp-validation-for="Dob" class="text-danger"></span>
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group mb-3">
+                    <label asp-for="Gender" class="control-label fw-bold"></label>
+                    <input asp-for="Gender" class="form-control" />
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+
+                <!-- Contact -->
+                <div class="form-group mb-3">
+                    <label asp-for="Contact" class="control-label fw-bold"></label>
+                    <input asp-for="Contact" class="form-control" />
+                    <span asp-validation-for="Contact" class="text-danger"></span>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group mb-3">
+                    <label asp-for="Address" class="control-label fw-bold"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <!-- Previous Institute -->
+                <div class="form-group mb-3">
+                    <label asp-for="PreviousInstitute" class="control-label fw-bold"></label>
+                    <input asp-for="PreviousInstitute" class="form-control" />
+                    <span asp-validation-for="PreviousInstitute" class="text-danger"></span>
+                </div>
+
+                <!-- Documents -->
+                <div class="form-group mb-4">
+                    <label asp-for="Documents" class="control-label fw-bold"></label>
+                    <input asp-for="Documents" class="form-control" />
+                    <span asp-validation-for="Documents" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">
+                    Submit
+                </button>
+
+            </form>
+
+            <div class="text-center mt-3">
+                <a asp-action="Index" class="text-dark">← Back to List</a>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+ *@
+
+
+@model Darsenizami.Models.AdmissionForms
+
+<!-- ✅ Added custom inline padding-top to perfectly push content below fixed headers -->
+<div class="container pt-5 my-5" style="padding-top: 90px !important;">
+    <div class="row justify-content-center">
+        <!-- Width ko thoda barhaya taake columns side-by-side ache lagien -->
+        <div class="col-xl-8 col-lg-10">
+
+            <!-- Modern Card Wrapper -->
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+                <!-- Elegant Header -->
+                <div class="card-header bg-primary bg-gradient text-white text-center py-4 border-0">
+                    <h2 class="mb-0 fw-bold tracking-wide">Admission Form</h2>
+                    <p class="text-white-50 small mb-0 mt-1">Please fill out the form carefully to submit your application</p>
+                </div>
+
+                <div class="card-body p-4 p-md-5 bg-white">
+                    <form asp-action="Create">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger small mb-4"></div>
+
+                        <!-- 2-Column Grid Starts Here -->
+                        <div class="row g-4">
+
+                            <!-- Full Name -->
+                            <div class="col-md-6">
+                                <label asp-for="FullName" class="form-label fw-semibold text-secondary small"></label>
+                                <input asp-for="FullName" class="form-control form-control-lg border-2 shadow-none" placeholder="John Doe" />
+                                <span asp-validation-for="FullName" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Date of Birth -->
+                            <div class="col-md-6">
+                                <label asp-for="Dob" class="form-label fw-semibold text-secondary small"></label>
+                                <input asp-for="Dob" type="date" class="form-control form-control-lg border-2 shadow-none" />
+                                <span asp-validation-for="Dob" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="col-md-6">
+                                <label asp-for="Gender" class="form-label fw-semibold text-secondary small"></label>
+                                <input asp-for="Gender" class="form-control form-control-lg border-2 shadow-none" placeholder="e.g., Male / Female" />
+                                <span asp-validation-for="Gender" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Contact -->
+                            <div class="col-md-6">
+                                <label asp-for="Contact" class="form-label fw-semibold text-secondary small"></label>
+                                <input asp-for="Contact" class="form-control form-control-lg border-2 shadow-none" placeholder="+92 300 1234567" />
+                                <span asp-validation-for="Contact" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Previous Institute -->
+                            <div class="col-md-6">
+                                <label asp-for="PreviousInstitute" class="form-label fw-semibold text-secondary small"></label>
+                                <input asp-for="PreviousInstitute" class="form-control form-control-lg border-2 shadow-none" placeholder="Previous school/college name" />
+                                <span asp-validation-for="PreviousInstitute" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Documents -->
+                            <div class="col-md-6">
+                                <label asp-for="Documents" class="form-label fw-semibold text-secondary small"></label>
+                                <input asp-for="Documents" class="form-control form-control-lg border-2 shadow-none" />
+                                <span asp-validation-for="Documents" class="text-danger small"></span>
+                            </div>
+
+                            <!-- Address (Full Width for better space) -->
+                            <div class="col-12">
+                                <label asp-for="Address" class="form-label fw-semibold text-secondary small"></label>
+                                <input asp-for="Address" class="form-control form-control-lg border-2 shadow-none" placeholder="Current residential address" />
+                                <span asp-validation-for="Address" class="text-danger small"></span>
+                            </div>
+
+                        </div>
+                        <!-- 2-Column Grid Ends Here -->
+                        <!-- Action Button -->
+                        <div class="mt-5">
+                            <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold py-3 rounded-3 shadow-sm transition-all">
+                                Submit Application
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Back Link -->
+            <div class="text-center mt-4">
+                <a asp-action="Index" class="text-muted text-decoration-none small">
+                    <span class="me-1">←</span> Back to List
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
